@@ -5,6 +5,7 @@ import java.awt.*;
 
 // Insert yourname here
 // Burin Intachuen
+// Possathorn Sujipisut
 
 //import java.awt.Color;
 
@@ -41,7 +42,7 @@ public class Ultimaterobot extends Robot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Replace the next line with any behavior you would like
-		fire(1);
+		fire(10);
 	}
 
 	/**
