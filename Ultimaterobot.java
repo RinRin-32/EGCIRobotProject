@@ -21,7 +21,8 @@ public class Ultimaterobot extends Robot
 	 */
 	public void run() {
 		// Initialization of the robot should be put here
-
+		setAdjustGunForRobotTurn(true);
+		setAdjustRadarForGunTurn(true);
 		// After trying out your robot, try uncommenting the import at the top,
 		// and the next line:
 
