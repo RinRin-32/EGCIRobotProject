@@ -14,13 +14,14 @@ import java.awt.*;
 /**
  * Ultimaterobot - a robot by (your name here)
  */
-public class Ultimaterobot extends Robot
+public class Ultimaterobot extends AdvancedRobot
 {
 	/**
 	 * run: Ultimaterobot's default behavior
 	 */
 	public void run() {
 		// Initialization of the robot should be put here
+		setColors(Color.pink, Color.meganta, Color.black);
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
 		// After trying out your robot, try uncommenting the import at the top,
@@ -31,10 +32,7 @@ public class Ultimaterobot extends Robot
 		// Robot main loop
 		while(true) {
 			// Replace the next 4 lines with any behavior you would like
-			ahead(100);
-			turnGunRight(360);
-			back(100);
-			turnGunRight(360);
+			
 		}
 	}
 
@@ -43,7 +41,18 @@ public class Ultimaterobot extends Robot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Replace the next line with any behavior you would like
-		fire(10);
+		double distance = e.getgetDistance();
+		if (distance < 200)
+		{
+			fire(2.5);
+		}
+		
+	}
+
+	public void onRobotDeath(RobotDeathEvent e) {
+		if(
+
+
 	}
 
 	/**
