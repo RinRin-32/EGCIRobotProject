@@ -1,6 +1,6 @@
 package aigroupwork;
 import robocode.*;
-
+import com.maximgalushka.robocode.AdvancedEnemyBot;
 import java.awt.*;
 
 // Insert yourname here
@@ -24,6 +24,15 @@ public class Ultimaterobot extends AdvancedRobot
 		setColors(Color.pink, Color.meganta, Color.black);
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
+		moveAmount = Math.max(getBattleFieldWidth(), getBattleFieldHeight());
+		peek = false;
+		turnLeft(getHeading() % 90);
+		ahead(moveAmount);
+		peek = true;
+		turnGunRight(90);
+		turnRight(90);
+		
+
 		// After trying out your robot, try uncommenting the import at the top,
 		// and the next line:
 
@@ -31,7 +40,14 @@ public class Ultimaterobot extends AdvancedRobot
 
 		// Robot main loop
 		while(true) {
-			// Replace the next 4 lines with any behavior you would like
+			// Look before we turn when ahead() completes.
+			peek = true;
+			// Move up the wall
+			ahead(moveAmount);
+			// Don't look now
+			peek = false;
+			// Turn to the next wall
+			turnRight(90);
 			
 		}
 	}
