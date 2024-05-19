@@ -73,11 +73,11 @@ public class Ultimaterobot extends Robot
 	}
 
 
-	void scan() {
+	void doScanner() {
 		setTurnRadarRight(360);
 	}
 
-	void fireGun() {
+	void doGun() {
 
 		// don't fire if there's no enemy
 		//if (e.none()) return;
