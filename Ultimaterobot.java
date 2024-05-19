@@ -1,9 +1,9 @@
 package aigroupwork;
 import robocode.*;
+import robocode.HitRobotEvent;
 import robocode.ScannedRobotEvent;
 import robocode.Robot;
 import java.awt.*;
-
 // Insert yourname here
 // Burin Intachuen
 // Mhadhanagul Charoenphon
@@ -16,14 +16,16 @@ import java.awt.*;
 /**
  * Ultimaterobot - a robot by (your name here)
  */
-public class Ultimaterobot extends AdvancedRobot
+public class Ultimaterobot extends Robot
 {
 	/**
 	 * run: Ultimaterobot's default behavior
 	 */
+	boolean peek;
+	double moveAmount;
 	public void run() {
 		// Initialization of the robot should be put here
-		setColors(Color.pink, Color.meganta, Color.black);
+		setColors(Color.pink, Color.magenta, Color.black);
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
 		moveAmount = Math.max(getBattleFieldWidth(), getBattleFieldHeight());
@@ -50,8 +52,8 @@ public class Ultimaterobot extends AdvancedRobot
 			peek = false;
 			// Turn to the next wall
 			turnRight(90);
-			firegun();
-			scan();
+			doGun();
+			doScanner();
 		}
 	}
 
@@ -60,7 +62,7 @@ public class Ultimaterobot extends AdvancedRobot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Replace the next line with any behavior you would like
-		double distance = e.getgetDistance();
+		double distance = e.getDistance();
 		fireGun();
 		//if (distance < 200)
 		//{
