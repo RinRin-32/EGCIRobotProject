@@ -1,9 +1,8 @@
+package aigroupwork;
 
 
-
-
-
-
+import robocode.Robot;
+import robocode.ScannedRobotEvent;
 
 
 public class EnemyBot extends Robot {
