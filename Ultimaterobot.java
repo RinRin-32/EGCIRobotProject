@@ -16,7 +16,7 @@ import java.awt.*;
 /**
  * Ultimaterobot - a robot by (your name here)
  */
-public class Ultimaterobot extends Robot
+public class Ultimaterobot extends AdvancedRobot
 {
 	/**
 	 * run: Ultimaterobot's default behavior
@@ -45,6 +45,7 @@ public class Ultimaterobot extends Robot
 		// Robot main loop
 		while(true) {
 			// Look before we turn when ahead() completes.
+			turnGunRight(180);
 			peek = true;
 			// Move up the wall
 			ahead(moveAmount);
@@ -52,8 +53,6 @@ public class Ultimaterobot extends Robot
 			peek = false;
 			// Turn to the next wall
 			turnRight(90);
-			doGun();
-			doScanner();
 		}
 	}
 
@@ -63,39 +62,18 @@ public class Ultimaterobot extends Robot
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Replace the next line with any behavior you would like
 		double distance = e.getDistance();
-		fireGun();
-		//if (distance < 200)
-		//{
-		//	fire(2.5);
-		//}
+		if (distance < 200)
+		{
+			fire(2.5);
+		}
+		else if (200 < distance && distance < 300)
+		{
+			fire(1.0);
+		}
 	
 		
 	}
 
-
-	void doScanner() {
-		setTurnRadarRight(360);
-	}
-
-	void doGun() {
-
-		// don't fire if there's no enemy
-		//if (e.none()) return;
-
-		// convenience variable
-		double max = Math.max(getBattleFieldHeight(), getBattleFieldWidth());
-		// only shoot if we're (close to) pointing at our enemy
-		if (Math.abs(getTurnRemaining()) < 10) {
-			if (e.getDistance() < max / 2) {
-				// fire hard when close
-				setFire(2);
-			} else {
-				// otherwise, just plink him
-				//setFire(1);
-			}
-		}
-	}
-	
 	/**
 	 * onHitByBullet: What to do when you're hit by a bullet
 	 */
@@ -112,5 +90,3 @@ public class Ultimaterobot extends Robot
 		back(20);
 	}	
 }
-// Code used from https://github.com/mgalushka/robocode-robots/blob/master/src/main/java/com/maximgalushka/robocode/AdvancedEnemyBot.java
-// Code used from https://github.com/mgalushka/robocode-robots/blob/master/src/main/java/com/maximgalushka/robocode/EnemyBot.java
