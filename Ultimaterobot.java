@@ -1,4 +1,5 @@
 package aigroupwork;
+package com.maximgalushka.robocode.robots;
 import robocode.*;
 import com.maximgalushka.robocode.AdvancedEnemyBot;
 import java.awt.*;
