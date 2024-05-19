@@ -78,6 +78,7 @@ public class Ultimaterobot extends Robot {
 		ahead(5000);
 		// Turn gun to starting point
 		turnGunLeft(90);
+		
 	}
 
 	/**
@@ -86,9 +87,14 @@ public class Ultimaterobot extends Robot {
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Should we stop, or just fire?
 		if (e.getDistance() < 300){
+			corner += 90;
+			if (corner == 270) {
+				corner = -90;
+			}
 			stopWhenSeeRobot = false;
 			back(5000);
 			goCorner();
+			
 		}
 		if (stopWhenSeeRobot) {
 			// Stop everything!  You can safely call stop multiple times.
