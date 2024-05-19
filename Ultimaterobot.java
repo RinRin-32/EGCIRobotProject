@@ -61,6 +61,7 @@ public class Ultimaterobot extends AdvancedRobot
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Replace the next line with any behavior you would like
 		double distance = e.getgetDistance();
+		fireGun();
 		//if (distance < 200)
 		//{
 		//	fire(2.5);
@@ -77,7 +78,7 @@ public class Ultimaterobot extends AdvancedRobot
 	void fireGun() {
 
 		// don't fire if there's no enemy
-		if (enemy.none()) return;
+		if (enemy	.none()) return;
 
 		// convenience variable
 		double max = Math.max(getBattleFieldHeight(), getBattleFieldWidth());
