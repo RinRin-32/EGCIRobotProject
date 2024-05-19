@@ -6,6 +6,7 @@ import java.awt.*;
 
 // Insert yourname here
 // Burin Intachuen
+// Mhadhanagul Charoenphon
 // Possathorn Sujipisut
 
 //import java.awt.Color;
