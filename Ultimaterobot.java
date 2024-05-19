@@ -21,13 +21,11 @@ public class Ultimaterobot extends AdvancedRobot
 	/**
 	 * run: Ultimaterobot's default behavior
 	 */
-	private AdvancedEnemyBot enemy = new AdvancedEnemyBot();
 	public void run() {
 		// Initialization of the robot should be put here
 		setColors(Color.pink, Color.meganta, Color.black);
 		setAdjustGunForRobotTurn(true);
 		setAdjustRadarForGunTurn(true);
-		enemy.reset()
 		moveAmount = Math.max(getBattleFieldWidth(), getBattleFieldHeight());
 		peek = false;
 		turnLeft(getHeading() % 90);
@@ -62,23 +60,15 @@ public class Ultimaterobot extends AdvancedRobot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Replace the next line with any behavior you would like
-		//double distance = e.getgetDistance();
+		double distance = e.getgetDistance();
 		//if (distance < 200)
 		//{
 		//	fire(2.5);
 		//}
-		if (enemy.none() || e.getName().equals(enemy.getName())) 
-		{
-		enemy.update(e);
-		}
+	
 		
 	}
 
-	public void onRobotDeath(RobotDeathEvent e) {
-	if (e.getName().equals(enemy.getName())) {
-		enemy.reset();
-	}
-}
 
 	void scan() {
 		setTurnRadarRight(360);
@@ -93,7 +83,7 @@ public class Ultimaterobot extends AdvancedRobot
 		double max = Math.max(getBattleFieldHeight(), getBattleFieldWidth());
 		// only shoot if we're (close to) pointing at our enemy
 		if (Math.abs(getTurnRemaining()) < 10) {
-			if (enemy.getDistance() < max / 2) {
+			if (e.getDistance() < max / 2) {
 				// fire hard when close
 				setFire(2);
 			} else {
