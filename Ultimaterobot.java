@@ -78,7 +78,7 @@ public class Ultimaterobot extends AdvancedRobot
 	void fireGun() {
 
 		// don't fire if there's no enemy
-		if (enemy	.none()) return;
+		//if (e.none()) return;
 
 		// convenience variable
 		double max = Math.max(getBattleFieldHeight(), getBattleFieldWidth());
