@@ -1,3 +1,4 @@
+package aigroupwork;
 import robocode.Robot;
 import robocode.ScannedRobotEvent;
 
