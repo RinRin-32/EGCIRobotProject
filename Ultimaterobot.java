@@ -2,25 +2,41 @@ package aigroupwork;
 
 import robocode.*;
 import static robocode.util.Utils.normalRelativeAngleDegrees;
+import robocode.BattleRules;
 
 
 public class Ultimaterobot extends AdvancedRobot  {
 
 	//Corner, 0=topLeft, 90=topRight, 180=bottomRight, 270(-90)=bottomLeft, static to keep in between rounds
-	static int corner = 0;
+	int corner = 0;
 	//Gun Direction for turning around or looking at enemy
 	int gunDirection = 1;
-	//Number of other robot in the field for calculations on death
-	int others;
 	//stop the robot from shooting at other robot
 	boolean stopWhenSeeRobot = false;
 
 	public void run() {
 
+		//get user's robot position
+		int X = (int)getX();
+		int Y = (int)getY();
+
+		//get battlefield size
+		int width = (int)getBattleFieldWidth();
+		int height = (int)getBattleFieldHeight();
+
+		//see which corner to go to
+		if (X < (int)(width/2) && Y > (int)(height/2)) {
+			corner = 0;
+		} else if (X > (int)(width/2) && Y > (int)(height/2)) {
+			corner = 90;
+		} else if (X > (int)(width/2) && Y < (int)(height/2)) {
+			corner = 180;
+		} else if (X < (int)(width/2) && Y < (int)(height/2)) {
+			corner = -90;
+		}
+
 		//go to corner first before fighting
 		goCorner();
-		//get number of other robot
-		others = getOthers();
 
 		// Turns the gun infinitely, looking for enemies
 		while (true) {
@@ -61,18 +77,4 @@ public class Ultimaterobot extends AdvancedRobot  {
 		stopWhenSeeRobot = true;
 	}
 
-	public void onDeath(DeathEvent e) {
-		// Well, others should never be 0, but better safe than sorry.
-		if (others == 0) {
-			return;
-		}
-
-		// If 75% of the robots are still alive when we die, we'll switch corners.
-		if (getOthers() / (double) others >= .75) {
-			corner += 90;
-			if (corner == 270) {
-				corner = -90;
-			}
-		}
-	}
 }
