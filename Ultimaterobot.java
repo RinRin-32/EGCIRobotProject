@@ -25,11 +25,11 @@ public class Ultimaterobot extends AdvancedRobot  {
 		int height = (int)getBattleFieldHeight();
 
 		//see which corner to go to
-		if (X < (int)(width/2) && Y > (int)(height/2)) {
+		if (X < (int)(width/2) && Y >= (int)(height/2)) {
 			corner = 0;
-		} else if (X > (int)(width/2) && Y > (int)(height/2)) {
+		} else if (X >= (int)(width/2) && Y >= (int)(height/2)) {
 			corner = 90;
-		} else if (X > (int)(width/2) && Y < (int)(height/2)) {
+		} else if (X >= (int)(width/2) && Y < (int)(height/2)) {
 			corner = 180;
 		} else if (X < (int)(width/2) && Y < (int)(height/2)) {
 			corner = -90;
